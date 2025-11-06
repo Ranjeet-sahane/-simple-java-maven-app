@@ -1,5 +1,5 @@
-pipeline {
 
+pipeline {
     agent any
 
     tools {
@@ -17,7 +17,7 @@ pipeline {
 
         stage('Build Maven') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn -B -DskipTests clean package'
             }
         }
 
@@ -26,7 +26,7 @@ pipeline {
                 deploy adapters: [
                     tomcat9(
                         credentialsId: 'tomcat-user',
-                        url: 'http://3.95.56.164:8081'
+                        url: 'http://34.234.83.134:8081'
                     )
                 ],
                 war: 'target/*.war'
@@ -35,3 +35,4 @@ pipeline {
     }
 }
 
+      
