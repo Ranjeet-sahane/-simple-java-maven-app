@@ -17,10 +17,7 @@ pipeline {
 
         stage('Build Maven') {
             steps {
-                sh '''
-                    cd app
-                    mvn clean package
-                '''
+                sh 'mvn clean package'
             }
         }
 
@@ -32,7 +29,7 @@ pipeline {
                         url: 'http://http://3.95.56.164:8081'
                     )
                 ],
-                war: 'app/target/*.war'
+                war: 'target/*.war'
             }
         }
     }
