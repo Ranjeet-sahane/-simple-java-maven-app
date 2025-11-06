@@ -17,7 +17,10 @@ pipeline {
 
         stage('Build Maven') {
             steps {
-                sh 'mvn clean package'
+                sh '''
+                    cd app
+                    mvn clean package
+                '''
             }
         }
 
@@ -26,11 +29,12 @@ pipeline {
                 deploy adapters: [
                     tomcat9(
                         credentialsId: 'tomcat-user',
-                        url: 'http://44.192.70.101:8080'
+                        url: 'http://http://3.95.56.164:8081'
                     )
                 ],
-                war: '**/*.war'
+                war: 'app/target/*.war'
             }
         }
     }
 }
+
