@@ -26,7 +26,7 @@ pipeline {
                 deploy adapters: [
                     tomcat9(
                         credentialsId: 'tomcat-user',
-                        url: 'http://54.224.195.12:8081'
+                        url: 'http://34.201.71.113:8081'
                     )
                 ],
                 war: 'target/*.war'
